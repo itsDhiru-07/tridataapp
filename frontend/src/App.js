@@ -719,6 +719,169 @@ const TeamSection = () => {
   );
 };
 
+// Rolling Testimonials Section
+const RollingTestimonialsSection = () => {
+  const rollingTestimonials = [
+    {
+      name: "David Park",
+      title: "Chief Data Officer",
+      company: "TechNova Inc",
+      content: "DataFlow AI revolutionized our entire analytics pipeline. The ROI was immediate and substantial.",
+      rating: 5
+    },
+    {
+      name: "Lisa Anderson",
+      title: "VP Engineering",
+      company: "CloudScale Systems",
+      content: "Outstanding AI automation solutions. Our processing time decreased by 75% in just 3 months.",
+      rating: 5
+    },
+    {
+      name: "Marcus Thompson",
+      title: "Head of Analytics",
+      company: "FinTech Solutions",
+      content: "The team's expertise in data engineering is unmatched. Highly recommend for any enterprise.",
+      rating: 5
+    },
+    {
+      name: "Rachel Kim",
+      title: "CTO",
+      company: "DataDriven Corp",
+      content: "Seamless integration and incredible results. Our data infrastructure has never been more robust.",
+      rating: 5
+    },
+    {
+      name: "James Wilson",
+      title: "Director of Operations",
+      company: "Smart Analytics",
+      content: "From concept to deployment, the process was flawless. True professionals in every sense.",
+      rating: 5
+    },
+    {
+      name: "Elena Rodriguez",
+      title: "Data Science Lead",
+      company: "AI Innovations",
+      content: "The predictive models they built transformed our business intelligence capabilities completely.",
+      rating: 5
+    },
+    {
+      name: "Thomas Brown",
+      title: "VP Technology",
+      company: "Digital Dynamics",
+      content: "Exceptional service and cutting-edge solutions. Our data processing is now lightning fast.",
+      rating: 5
+    },
+    {
+      name: "Anna Chen",
+      title: "Chief Analytics Officer",
+      company: "Growth Partners",
+      content: "The automation workflows they implemented saved us countless hours and increased accuracy.",
+      rating: 5
+    }
+  ];
+
+  // Duplicate the testimonials for seamless infinite scroll
+  const duplicatedTestimonials = [...rollingTestimonials, ...rollingTestimonials];
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-12">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
+            Trusted by Industry Leaders
+          </h2>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">
+            See what our clients are saying about their transformation journey
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Rolling Testimonials Container */}
+      <div className="relative">
+        <div className="flex space-x-6 animate-scroll">
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <motion.div
+              key={`${testimonial.name}-${index}`}
+              className="flex-shrink-0 w-96 bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              {/* Star Rating */}
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              
+              {/* Quote */}
+              <blockquote className="text-slate-300 text-lg leading-relaxed mb-6 min-h-[80px]">
+                "{testimonial.content}"
+              </blockquote>
+              
+              {/* Author Info */}
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold">{testimonial.name}</h4>
+                  <p className="text-cyan-400 text-sm font-medium">{testimonial.title}</p>
+                  <p className="text-slate-400 text-sm">{testimonial.company}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Gradient Overlays for fade effect */}
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
+      </div>
+
+      {/* Client Logos Section */}
+      <div className="max-w-7xl mx-auto px-6 mt-16">
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-slate-400 text-lg">Trusted by leading companies worldwide</p>
+        </motion.div>
+        
+        <motion.div 
+          className="flex flex-wrap justify-center items-center gap-8 opacity-60"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          {/* Simplified company logos using text */}
+          {['TechNova', 'CloudScale', 'FinTech Solutions', 'DataDriven Corp', 'Smart Analytics', 'AI Innovations'].map((company, index) => (
+            <motion.div
+              key={company}
+              className="text-slate-500 font-bold text-xl hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              {company}
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Contact Section
 const ContactSection = () => {
   const ref = useRef(null);
