@@ -102,6 +102,11 @@ html {
   100% { background-position: 0% 50%; }
 }
 
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .float-animation {
   animation: float 3s ease-in-out infinite;
 }
@@ -114,6 +119,14 @@ html {
   background: linear-gradient(-45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
 
 /* Custom grid pattern */
