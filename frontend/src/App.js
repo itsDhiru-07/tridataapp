@@ -174,6 +174,9 @@ const App = () => {
       {/* Testimonials */}
       <TestimonialsSection />
       
+      {/* Rolling Client Feedback */}
+      <RollingTestimonialsSection />
+      
       {/* Team Section */}
       <TeamSection />
       
