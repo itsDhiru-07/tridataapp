@@ -1,4 +1,6 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -62,6 +64,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+react_build_dir = os.path.join(os.path.dirname(__file__), '../frontend/build')
+
+# Mount React build as static files at root URL "/"
+app.mount("/", StaticFiles(directory=react_build_dir, html=True), name="react")
+
+# Optional: catch-all route to serve index.html for SPA routing fallback
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    index_path = os.path.join(react_build_dir, "index.html")
+    return FileResponse(index_path)
 
 # Configure logging
 logging.basicConfig(
