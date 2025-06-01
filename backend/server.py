@@ -65,16 +65,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-react_build_dir = os.path.join(os.path.dirname(__file__), '../frontend/build')
+# react_build_dir = os.path.join(os.path.dirname(__file__), '../frontend/build')
 
-# Mount React build as static files at root URL "/"
-app.mount("/", StaticFiles(directory=react_build_dir, html=True), name="react")
+# # Mount React build as static files at root URL "/"
+# app.mount("/", StaticFiles(directory=react_build_dir, html=True), name="react")
 
-# Optional: catch-all route to serve index.html for SPA routing fallback
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
-    index_path = os.path.join(react_build_dir, "index.html")
-    return FileResponse(index_path)
+# # Optional: catch-all route to serve index.html for SPA routing fallback
+# @app.get("/{full_path:path}")
+# async def serve_react_app(full_path: str):
+#     index_path = os.path.join(react_build_dir, "index.html")
+#     return FileResponse(index_path)
 
 # Configure logging
 logging.basicConfig(
