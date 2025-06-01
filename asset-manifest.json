@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/itsDhiru-07/tridataapp.git/static/css/main.de3b005b.css",
+    "main.js": "/itsDhiru-07/tridataapp.git/static/js/main.b11f0cb6.js",
+    "index.html": "/itsDhiru-07/tridataapp.git/index.html",
+    "main.de3b005b.css.map": "/itsDhiru-07/tridataapp.git/static/css/main.de3b005b.css.map",
+    "main.b11f0cb6.js.map": "/itsDhiru-07/tridataapp.git/static/js/main.b11f0cb6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de3b005b.css",
+    "static/js/main.b11f0cb6.js"
+  ]
+}
